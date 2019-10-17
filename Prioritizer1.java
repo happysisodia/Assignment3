@@ -1,10 +1,11 @@
+import java.util.Arrays;
+
 public class Prioritizer1<T> implements Prioritizer<T>{
-	public int top = 0, count = 0;
-	public int phase = 0;
-	public int index = 0, flag = 0;
-	public T[] item;
-	public T buff;
-	
+	private int top = 0, count = 0;
+	private int phase = 0;
+	private int index = 0;
+	private T[] item;
+	CompareObject<T> itemComparator = new CompareObject<T>();
 			
 	@SuppressWarnings("unchecked")
 	public Prioritizer1() {
@@ -15,7 +16,7 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 		System.out.println(top);
 			item[top++] = x;
 		count = count +1;
-		for(int i = 0; i<=top; i++)
+		for(int i = 0; i<top; i++)
 			System.out.println(item[i]);
 	}
 	public void changePhase() {
@@ -27,8 +28,8 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 	
 	public void removeAny(T x) {
 		System.out.println("Inside this1");
-		buff = item[0];
-		
+		@SuppressWarnings("unchecked")
+		T[] newArray = (T[]) new Object[count - 1];
 		if(item != null)
 		{
 			for(int i = 0; i <= top; i++)
@@ -53,28 +54,18 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 					item[j] = item[j+1];
 				}
 				top = top -1;
+				count = count -1;
 			}
 			
-			for(int i = 0; i <= top; i++)
-			{
-				buff = item[i];
-				for(int j = i+1; j < top; j++)
-				{
-					if((Integer)item[i] > (Integer)item[j])
-					{
-						item[i] = item[j];
-						item[j] = buff;
-						buff = item[i];
-					}
-					else
-					{
-						continue;
-					}
-						
-				}
+			for(int j = 0; j < count; j++) {
+				newArray[j] = item[j];
+				System.out.println("Values: "+newArray[j]);
 			}
-			for(int i = 0; i<top; i++)
-				System.out.println(item[i]);
+			
+			Arrays.sort(newArray, itemComparator);
+			
+			for(int i = 0; i<count; i++)
+				System.out.println(newArray[i]);
 				
 		}
 		
@@ -82,23 +73,22 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 			System.out.println("Item is a null");
 	}
 	public void removeNextInOrder() {
-		buff = item[0];
 		top--;
-		for(int i =0; i<=top; i++)
-		{
-			buff = item[i];
-			for(int j =i+1; j<top; j++)
-			{
-				if((Integer)buff>(Integer)item[j])
-				{
-					item[i] = item[j];
-					item[j] = buff;
-					buff = item[i];
-				}
-				else
-					continue;
-			}
+		System.out.println("Count: "+count);
+		@SuppressWarnings("unchecked")
+		T[] newArray = (T[]) new Object[count - 1];
+		count--;
+		for(int j = 0; j < count; j++) {
+			newArray[j] = item[j];
+			System.out.println("Values: "+newArray[j]);
 		}
+		
+		Arrays.sort(newArray, itemComparator);
+		
+		for(int i = 0; i<count; i++)
+			System.out.println(newArray[i]);
+		
+		System.out.println("Waazzzupp!!");
 	}
 	
 	public boolean isInInsertionPhase() {

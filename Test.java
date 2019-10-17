@@ -30,8 +30,7 @@ public class Test {
 			System.out.println("2) Remove Any");
 			System.out.println("3) Remove Next In Index");
 			System.out.println("4) Get Size");
-			System.out.println("5) Compare items");
-			System.out.println("6) Exit");
+			System.out.println("5) Exit");
 			
 			while(!sc.hasNextInt()) {
 				sc.next();
@@ -202,10 +201,6 @@ public class Test {
 				else if(option == 4)
 				{
 					System.out.println("Size of the array is"+p3.getSize());
-				}
-				else if(option == 5)
-				{
-					
 				}
 				else
 				{
