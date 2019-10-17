@@ -1,6 +1,9 @@
-public class CompareObject<T> {
-	public int compare() {
+import java.util.Comparator;
+
+public class CompareObject<T> implements Comparator<T>{
+	@Override
+	public int compare(T item1, T item2) {
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Integer)item1 - (Integer)item2);
 	}
 }
