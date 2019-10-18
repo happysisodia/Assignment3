@@ -1,3 +1,9 @@
+/*
+ *Completed by: Abhinav
+ *Prioritizer2: This will do insertion(user input), 
+ *removal(user input) and returns the
+ *size of the array
+*/
 import java.util.Arrays;
 
 public class Prioritizer2<T> implements Prioritizer<T>{
@@ -11,7 +17,7 @@ public class Prioritizer2<T> implements Prioritizer<T>{
 	public Prioritizer2() {
 		item = (T[]) new Object[10];
 	}
-
+	//insertion with sorting
 	public void insert(T x) {
 		item[top++] = x;
 		count = count +1;
@@ -33,7 +39,7 @@ public class Prioritizer2<T> implements Prioritizer<T>{
 		else
 			phase = 0;
 	}
-	
+	//removal with sorting
 	public void removeAny(T x) {
 		System.out.println("Inside this1");
 		@SuppressWarnings("unchecked")
@@ -79,6 +85,7 @@ public class Prioritizer2<T> implements Prioritizer<T>{
 		else
 			System.out.println("Item is a null");
 	}
+	//remove top element with sorting
 	public void removeNextInOrder() {
 		@SuppressWarnings("unchecked")
 		T[] newArray = (T[]) new Object[count - 1];
@@ -94,14 +101,14 @@ public class Prioritizer2<T> implements Prioritizer<T>{
 		for(int i = 0; i<count; i++)
 			System.out.println(newArray[i]);
 	}
-	
+	//check the phase whether it is in insert phase or not
 	public boolean isInInsertionPhase() {
 		if(phase == 0)
 			return true;
 		else
 			return false;
 	}
-	
+	//return the size of the array
 	public int getSize() {
 		return count;
 	}
