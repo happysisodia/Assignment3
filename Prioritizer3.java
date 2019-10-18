@@ -1,4 +1,7 @@
-
+//This is prioritizer 3
+//This implements Prioritizer interface
+//No need of sorting while inserting or removing
+//Happy//
 public class Prioritizer3<T> implements Prioritizer<T>{
 	public int top = 0, count = 0;
 	public int phase = 0;
@@ -11,20 +14,29 @@ public class Prioritizer3<T> implements Prioritizer<T>{
 		item = (T[]) new Object[10];
 	}
 
+	//To insert the item this function is called
 	public void insert(T x) {
 		System.out.println(top);
+		//just adding the item passed by the user 
+		//into the item array
 			item[top++] = x;
 		count = count +1;
 		for(int i = 0; i<top; i++)
 			System.out.println(item[i]);
 	}
+	//this function changes the phase depending on
+	//the user's action phase == 0: insert phase
+	//phase == 1: removal phase
 	public void changePhase() {
 		if(phase == 0)
 			phase = 1;
 		else
 			phase = 0;
 	}
-	
+	//this function removes the item from the array
+	//provided by the user
+	//if not present it will inform the user that
+	//the item does not exist in the array
 	public void removeAny(T x) {
 		System.out.println("Inside this1");
 		
@@ -58,6 +70,8 @@ public class Prioritizer3<T> implements Prioritizer<T>{
 		else
 			System.out.println("Item is a null");
 	}
+	
+	//this function removes the item from the top
 	public void removeNextInOrder() {
 		@SuppressWarnings("unchecked")
 		T[] newArray = (T[]) new Object[count - 1];
