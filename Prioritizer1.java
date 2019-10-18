@@ -1,3 +1,11 @@
+/*
+ Completed by Nach//Last Updated on 10/17/2019 9:40pm 
+ This class utilizes the prioritizer interface to 
+ add remove elements.
+ This also along with removing sort the array there
+ using a comparator class CompareObject 
+ */
+
 import java.util.Arrays;
 
 public class Prioritizer1<T> implements Prioritizer<T>{
@@ -11,7 +19,7 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 	public Prioritizer1() {
 		item = (T[]) new Object[10];
 	}
-
+	//adding the given element x in the array
 	public void insert(T x) {
 		System.out.println(top);
 			item[top++] = x;
@@ -19,13 +27,15 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 		for(int i = 0; i<top; i++)
 			System.out.println(item[i]);
 	}
+	//changing the phase from insert to removal and vice a versa
 	public void changePhase() {
 		if(phase == 0)
 			phase = 1;
 		else
 			phase = 0;
 	}
-	
+	//remove any element provided by the user and depending on its existence
+	//in the array
 	public void removeAny(T x) {
 		System.out.println("Inside this1");
 		@SuppressWarnings("unchecked")
@@ -62,7 +72,7 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 				System.out.println("Values: "+newArray[j]);
 			}
 			
-			Arrays.sort(newArray, itemComparator);
+			Arrays.sort(newArray, itemComparator);//sorting the array
 			
 			for(int i = 0; i<count; i++)
 				System.out.println(newArray[i]);
@@ -72,6 +82,7 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 		else
 			System.out.println("Item is a null");
 	}
+	//removes the item at the top from the array and sort it
 	public void removeNextInOrder() {
 		top--;
 		System.out.println("Count: "+count);
@@ -83,21 +94,21 @@ public class Prioritizer1<T> implements Prioritizer<T>{
 			System.out.println("Values: "+newArray[j]);
 		}
 		
-		Arrays.sort(newArray, itemComparator);
+		Arrays.sort(newArray, itemComparator);//sort the array
 		
 		for(int i = 0; i<count; i++)
 			System.out.println(newArray[i]);
 		
 		System.out.println("Waazzzupp!!");
 	}
-	
+	//check the phase whether it is in insertion or not
 	public boolean isInInsertionPhase() {
 		if(phase == 0)
 			return true;
 		else
 			return false;
 	}
-	
+	//get the size of the array
 	public int getSize() {
 		return count;
 	}

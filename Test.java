@@ -1,3 +1,9 @@
+/*
+ Completed by Nach//Last Updated on 10/17/2019 9:40pm 
+ This is class where main function is written. User provides
+ input and the system works accordingly
+ */
+
 import java.util.Scanner;
 
 public class Test {
@@ -8,7 +14,7 @@ public class Test {
 		Integer item = null, del = null;
 		Scanner sc = new Scanner(System.in);
 		Scanner input = new Scanner(System.in);
-		
+		//initializing our class objects
 		Prioritizer<Integer> p1 = new Prioritizer1<Integer>();
 		Prioritizer<Integer> p2 = new Prioritizer2<Integer>();
 		Prioritizer<Integer> p3 = new Prioritizer3<Integer>();
@@ -36,9 +42,9 @@ public class Test {
 				sc.next();
 			}
 			option = sc.nextInt();
-			
+			//checking for which prioritizer the user opted for
 			if(priority == 1)
-			{
+			{//checking for the options they will choose for prioritizer 1
 				if(option == 1)
 				{
 					if(p1.isInInsertionPhase())
@@ -94,8 +100,9 @@ public class Test {
 					break;
 				}
 			}
+			//checking for which prioritizer the user opted for
 			else if(priority == 2)
-			{
+			{//checking for the options they will choose for prioritizer 2
 				if(option == 1)
 				{
 					if(p2.isInInsertionPhase())
@@ -151,8 +158,9 @@ public class Test {
 					break;
 				}
 			}
+			//checking for which prioritizer the user opted for
 			else if(priority == 3)
-			{
+			{//checking for the options they will choose for prioritizer 3
 				if(option == 1)
 				{
 					if(p3.isInInsertionPhase())
